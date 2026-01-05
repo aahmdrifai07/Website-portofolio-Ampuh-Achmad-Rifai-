@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #0a192f;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span { color: #64ffda; }
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: #64ffda; }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), 
+                url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+
+/* Utilitas */
+.container { padding: 80px 10%; }
+.bg-light { background-color: #e9ecef; }
+.section-title { text-align: center; margin-bottom: 40px; color: #0a192f; font-size: 2rem; }
+
+/* Cards */
+.profile-grid, .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card, .stat-box, .media-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); border-bottom: 4px solid #64ffda; }
+
+.btn {
+    padding: 12px 30px;
+    background-color: #64ffda;
+    color: #0a192f;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Form Kontak */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+footer {
+    background: #0a192f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- RESPONSIVE DESIGN (Media Queries) --- */
+
+/* Tablet & HP (Lebar layar di bawah 1024px) */
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        width: 60%;
+    }
+}
+
+/* Smartphone (Lebar layar di bawah 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden; /* Mencegah scroll menyamping */
+    }
+
+    /* Navbar Mobile */
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #0a192f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 999;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        margin: 20px 0;
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    /* Burger Menu Icon */
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .burger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Hero Section Mobile */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Layout Grid Menjadi 1 Kolom */
+    .contact-wrapper, .profile-grid, .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .container {
+        padding: 60px 5%;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animasi untuk List Menu muncul satu per satu di HP */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Class untuk animasi silang pada ikon burger */
+.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+img {
+  border-radius: 15px; /* Mengubah semua sudut menjadi melengkung 15 piksel */
+  /* Atau gunakan 50% untuk membuat gambar menjadi lingkaran */
+  /* border-radius: 50%; */
+}
